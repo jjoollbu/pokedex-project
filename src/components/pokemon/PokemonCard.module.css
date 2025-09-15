@@ -1,0 +1,53 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px;
+  padding: 1rem;
+  margin: 0.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+}
+
+.card h3 {
+  margin: 0.5rem 0 0 0;
+  font-size: 1.25rem;
+  text-transform: capitalize;
+}
+
+.fire {
+  background: linear-gradient(180deg, #fd7d24 50%, #fbe3d6 50%);
+}
+.water {
+  background: linear-gradient(180deg, #4592c4 50%, #d6e9f9 50%);
+}
+.grass {
+  background: linear-gradient(180deg, #9bcc50 50%, #d9f3d6 50%);
+}
+.electric {
+    background: linear-gradient(180deg, #eed535 50%, #fcf7de 50%);
+}
+.bug {
+    background: linear-gradient(180deg, #729f3f 50%, #e0e6d5 50%);
+}
+.normal {
+    background: linear-gradient(180deg, #a4acaf 50%, #e9ebee 50%);
+}
+.poison {
+    background: linear-gradient(180deg, #b97fc9 50%, #eadaf2 50%);
+}
