@@ -1,9 +1,17 @@
-import React from 'react'
+import Home from './pages/Home.jsx';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 
-const App = () => {
+function App() {
   return (
-    <div>App</div>
-  )
+    <div className="app-container">
+      <Header />
+      <main className="main-content">
+        <Home />
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
