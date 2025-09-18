@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+}
+
+.logo {
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+}
+
+.logoSmall {
+    height: 24px;
+    object-fit: contain;
+    opacity: 0.85;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.logoSmall:hover {
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+
+    .logo {
+        height: 150px;
+    }
+
+    .logoSmall {
+        height: 45px;
+    }
+}
