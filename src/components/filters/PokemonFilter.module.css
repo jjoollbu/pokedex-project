@@ -34,7 +34,7 @@
 .filterSelect,
 .searchInput {
   padding: 0.35rem;
-  border: 2px solid #ddd;
+  border: 1px solid #000;
   font-size: 0.85rem;
   background-color: white;
   width: 100%;
