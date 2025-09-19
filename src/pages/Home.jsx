@@ -1,19 +1,48 @@
 import React, { useState } from 'react';
 import PokemonGrid from '../components/pokemon/PokemonGrid';
+import PokemonFilter from '../components/filters/PokemonFilter';
 import { usePokemon } from '../hooks/usePokemon';
-import Header from '../components/layout/Header'
-import Footer from '../components/layout/Footer'
+import { useFilters } from '../hooks/useFilters';
+import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
+import styles from './Home.module.css';
 
 function Home() {
-  const { pokemonList, loading, error } = usePokemon();
+  const [selectedRegion, setSelectedRegion] = useState('kanto');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedType, setSelectedType] = useState('');
+  const [sortBy, setSortBy] = useState('id');
 
-  if (loading) return <p style={{ textAlign: 'center', fontSize: '2rem' }}>Carregando...</p>;
-  if (error) return <p>Erro: {error}</p>;
+  const { pokemonList, loading, error } = usePokemon(selectedRegion);
+  const { filteredPokemon } = useFilters(pokemonList, {
+    searchTerm,
+    selectedType,
+    sortBy
+  });
+  if (loading) return <div className={styles.loading}>Carregando...</div>;
+  if (error) return <div className={styles.error}>Erro: {error}</div>;
 
   return (
-    <div>
+    <div className={styles.home}>
       <Header />
-      <PokemonGrid pokemonList={pokemonList} />
+
+      <PokemonFilter
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        selectedType={selectedType}
+        setSelectedType={setSelectedType}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+        selectedRegion={selectedRegion}
+        setSelectedRegion={setSelectedRegion}
+      />
+
+      <main className={styles.main}>
+        <PokemonGrid
+          pokemonList={filteredPokemon}
+        />
+      </main>
+
       <Footer />
     </div>
   );
