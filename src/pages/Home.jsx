@@ -1,27 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PokemonGrid from '../components/pokemon/PokemonGrid';
+import { usePokemon } from '../hooks/usePokemon';
+import Header from '../components/layout/Header'
+import Footer from '../components/layout/Footer'
 
 function Home() {
-  const [pokemonList, setPokemonList] = useState([]);
+  const { pokemonList, loading, error } = usePokemon();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
-        const data = await response.json();
-        setPokemonList(data.results);
-      } catch (error) {
-        console.error("Erro ao buscar a lista de pokémons: ", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  if (loading) return <p style={{ textAlign: 'center', fontSize: '2rem' }}>Carregando...</p>;
+  if (error) return <p>Erro: {error}</p>;
 
   return (
     <div>
-      <h1>Pokédex</h1>
+      <Header />
       <PokemonGrid pokemonList={pokemonList} />
+      <Footer />
     </div>
   );
 }
