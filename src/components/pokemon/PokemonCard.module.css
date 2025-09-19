@@ -1,53 +1,104 @@
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 180px;
-  padding: 1rem;
-  margin: 0.5rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  text-decoration: none;
-  color: #333;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  position: relative;
+  width: 160px;
+  height: 250px;
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 18px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
-.card img {
+.cardHeader {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+.pokemonId {
+  font-size: 1.1rem;
+}
+
+.infoIcon {
+  border: 1.5px solid rgba(255, 255, 255, 0.521);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-size: 0.9rem;
+  background: none;
+  color: white;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.infoIcon:hover{
+  border: 1.5px solid rgb(255, 255, 255);
+  transform: scale(1.30);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.pokemonImage {
   width: 120px;
   height: 120px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
-.card h3 {
-  margin: 0.5rem 0 0 0;
-  font-size: 1.25rem;
+.cardBody {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.pokemonName {
+  font-size: 1.3rem;
   text-transform: capitalize;
+  margin: 0 0 0.5rem 0;
 }
 
-.fire {
-  background: linear-gradient(180deg, #fd7d24 50%, #fbe3d6 50%);
+.typesContainer {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  gap: 1.2rem;
 }
-.water {
-  background: linear-gradient(180deg, #4592c4 50%, #d6e9f9 50%);
+
+.typeIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.grass {
-  background: linear-gradient(180deg, #9bcc50 50%, #d9f3d6 50%);
-}
-.electric {
-    background: linear-gradient(180deg, #eed535 50%, #fcf7de 50%);
-}
-.bug {
-    background: linear-gradient(180deg, #729f3f 50%, #e0e6d5 50%);
-}
-.normal {
-    background: linear-gradient(180deg, #a4acaf 50%, #e9ebee 50%);
-}
-.poison {
-    background: linear-gradient(180deg, #b97fc9 50%, #eadaf2 50%);
+
+.typeIcon img {
+    width: 30px;
+    height: 30px;
 }

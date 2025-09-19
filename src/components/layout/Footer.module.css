@@ -1,0 +1,40 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 0.5rem;
+    margin-top: 2rem;
+}
+
+.text {
+    font-size: 0.9rem;
+    color: #000;
+    margin-bottom: 0.5rem;
+}
+
+.link {
+    color: #000;
+    text-decoration: none;
+}
+
+.githubLogo {
+    height: 26px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.githubLogo:hover {
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .text {
+        font-size: 1.2rem;
+    }
+
+    .githubLogo {
+        height: 30px;
+    }
+}
