@@ -10,12 +10,10 @@ function PokemonCard({ pokemon, onCardClick }) {
   const type1 = pokemon.types[0] || 'default';
   const type2 = pokemon.types[1] || type1;
 
-  // Usa as cores 'light' para o gradiente
   const color1 = typeColors[type1].light;
   const color2 = typeColors[type2].light;
 
   const cardStyle = {
-    // Gradiente ajustado para ser de cima para baixo
     background: `linear-gradient(to bottom, ${color1}, ${color2})`,
   };
 
@@ -31,13 +29,12 @@ function PokemonCard({ pokemon, onCardClick }) {
         </button>
       </div>
 
-      <img className={styles.pokemonImage} src={pokemon.image} alt={pokemon.name} />
+      {pokemon.image && <img className={styles.pokemonImage} src={pokemon.image} alt={pokemon.name} />}
 
       <div className={styles.cardBody}>
         <h3 className={styles.pokemonName}>{pokemon.name}</h3>
         <div className={styles.typesContainer}>
           {pokemon.types.map(type => (
-            // O <div> do ícone agora usa a cor 'strong'
             <div 
               key={type} 
               className={styles.typeIcon} 
