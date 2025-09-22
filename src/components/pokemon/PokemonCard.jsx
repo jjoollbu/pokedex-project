@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './PokemonCard.module.css';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
 import { typeIcons, typeColors } from '../../utils/typeUtils';
 
 function PokemonCard({ pokemon, onCardClick }) {
@@ -29,20 +31,20 @@ function PokemonCard({ pokemon, onCardClick }) {
         </button>
       </div>
 
-      {pokemon.image && <img className={styles.pokemonImage} src={pokemon.image} alt={pokemon.name} />}
+      <img className={styles.pokemonImage} src={pokemon.image} alt={pokemon.name} />
 
       <div className={styles.cardBody}>
         <h3 className={styles.pokemonName}>{pokemon.name}</h3>
         <div className={styles.typesContainer}>
           {pokemon.types.map(type => (
-            <div 
-              key={type} 
-              className={styles.typeIcon} 
-              style={{ backgroundColor: typeColors[type].strong }}
-              title={type}
-            >
-              <img src={typeIcons[type]} alt={type} />
-            </div>
+            <Tooltip title={type} arrow key={type}>
+              <IconButton 
+                className={styles.typeIcon} 
+                style={{ backgroundColor: typeColors[type].strong }}
+              >
+                <img src={typeIcons[type]} alt={type} />
+              </IconButton>
+            </Tooltip>
           ))}
         </div>
       </div>
