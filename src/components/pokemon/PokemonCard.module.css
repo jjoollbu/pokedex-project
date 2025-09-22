@@ -30,7 +30,10 @@
 }
 
 .pokemonId {
-  font-size: 1.1rem;
+  color: rgb(27, 27, 27);
+  font-weight: 400;
+  font-size: 2.2rem;
+  font-family: "Teko", sans-serif;
 }
 
 .infoIcon {
@@ -76,29 +79,31 @@
 }
 
 .pokemonName {
-  font-size: 1.3rem;
+  color: rgb(27, 27, 27);
+  font-family: "Teko", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
   text-transform: capitalize;
-  margin: 0 0 0.5rem 0;
+  margin: 1rem;
 }
 
 .typesContainer {
   display: flex;
   justify-content: center;
-  margin: 1rem;
-  gap: 1.2rem;
+  gap: 1rem; 
 }
 
 .typeIcon {
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .typeIcon img {
-    width: 30px;
-    height: 30px;
+  width: 20px;
+  height: 20px;
 }
