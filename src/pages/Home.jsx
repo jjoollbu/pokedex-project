@@ -40,6 +40,7 @@ function Home() {
       <main className={styles.main}>
         <PokemonGrid
           pokemonList={filteredPokemon}
+          onTypeClick={(type) => setSelectedType(type)}
         />
       </main>
 
