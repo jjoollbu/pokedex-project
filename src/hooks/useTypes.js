@@ -11,7 +11,12 @@ export const useTypes = () => {
       try {
         setLoading(true);
         const typesList = await getAllTypes();
-        setTypes(typesList);
+
+        const filteredTypes = typesList.filter(type =>
+          type !== 'unknown' && type !== 'stellar'
+        );
+
+        setTypes(filteredTypes);
       } catch (err) {
         setError(err.message);
       } finally {
