@@ -1,7 +1,7 @@
 import React from 'react';
 import PokemonCard from './PokemonCard';
 
-function PokemonGrid({ pokemonList, onCardClick }) {
+function PokemonGrid({ pokemonList, onCardClick, onTypeClick }) {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
       {pokemonList.map(pokemon => (
@@ -9,6 +9,7 @@ function PokemonGrid({ pokemonList, onCardClick }) {
           key={pokemon.id} 
           pokemon={pokemon}
           onCardClick={onCardClick}
+          OnTypeClick={onTypeClick}
         />
       ))}
     </div>
