@@ -78,7 +78,7 @@ export const getPokemonDetails = async (identifier) => {
     return {
       id: data.id,
       name: data.name,
-      image: data.sprites.other['official-artwork'].front_default ||
+      image: data.sprites.other['dream_world'].front_default ||
         data.sprites.front_default,
       types: data.types.map(typeInfo => typeInfo.type.name),
       stats: data.stats.map(stat => ({
