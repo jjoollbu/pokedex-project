@@ -1,34 +1,57 @@
-import React from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTypes } from '../../hooks/useTypes'
 import styles from './PokemonFilter.module.css';
-
-const PokemonFilter = ({
-    searchTerm,
-    setSearchTerm,
-    selectedType,
-    setSelectedType,
-    sortBy,
-    setSortBy,
-    selectedRegion,
-    setSelectedRegion
-}) => {
+const PokemonFilter = ({ pokemonList, selectedRegion, setSelectedRegion, onFilter }) => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedType, setSelectedType] = useState('');
+    const [sortBy, setSortBy] = useState('id');
     const { types, loading: typesLoading } = useTypes();
 
-    const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
-    };
+    const filteredPokemon = useMemo(() => {
+        if (!pokemonList) return [];
+        let filtered = [...pokemonList];
 
-    const handleTypeChange = (e) => {
-        setSelectedType(e.target.value);
-    };
+        if (searchTerm) {
+            const term = searchTerm.toLowerCase();
+            filtered = filtered.filter(pokemon =>
+                pokemon.name.toLowerCase().includes(term) ||
+                pokemon.id.toString().includes(term)
+            );
+        }
 
-    const handleSortChange = (e) => {
-        setSortBy(e.target.value);
-    };
+        if (selectedType) {
+            filtered = filtered.filter(pokemon =>
+                pokemon.types.includes(selectedType.toLowerCase())
+            );
+        }
 
-    const handleRegionChange = (e) => {
-        setSelectedRegion(e.target.value);
-    };
+        filtered.sort((a, b) => {
+            switch (sortBy) {
+                case 'id':
+                    return a.id - b.id;
+                case 'id-desc':
+                    return b.id - a.id;
+                case 'name':
+                    return a.name.localeCompare(b.name);
+                case 'name-desc':
+                    return b.name.localeCompare(a.name);
+                default:
+                    return a.id - b.id;
+            }
+        });
+
+        return filtered;
+    }, [pokemonList, searchTerm, selectedType, sortBy]);
+
+    useEffect(() => {
+        if (onFilter) onFilter(filteredPokemon);
+    }, [filteredPokemon, onFilter]);
+
+    const handleSearchChange = (e) => setSearchTerm(e.target.value);
+    const handleTypeChange = (e) => setSelectedType(e.target.value);
+    const handleSortChange = (e) => setSortBy(e.target.value);
+    const handleRegionChange = (e) => setSelectedRegion(e.target.value);
+
     return (
         <div className={styles.filterContainer}>
             <div className={styles.filterGrid}>
