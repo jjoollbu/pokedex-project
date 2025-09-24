@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import PokemonGrid from '../components/pokemon/PokemonGrid';
-import { usePokemon } from '../hooks/usePokemon';
-import Header from '../components/layout/Header'
-import Footer from '../components/layout/Footer'
+import PokemonDetailModal from '../components/pokemon/PokemonDetailModal';
+import { usePokemon } from '../hooks/usePokemon'; 
 
 function Home() {
   const { pokemonList, loading, error } = usePokemon();
+  const [selectedPokemonId, setSelectedPokemonId] = useState(null);
 
-  if (loading) return <p style={{ textAlign: 'center', fontSize: '2rem' }}>Carregando...</p>;
+  const handleInfoClick = (pokemonId) => {
+    setSelectedPokemonId(pokemonId);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPokemonId(null);
+  };
+
+  if (loading) return <p>Carregando...</p>;
   if (error) return <p>Erro: {error}</p>;
 
   return (
     <div>
-      <Header />
-      <PokemonGrid pokemonList={pokemonList} />
-      <Footer />
+      <PokemonGrid pokemonList={pokemonList} onCardClick={handleInfoClick} />
+      
+      {selectedPokemonId && (
+        <PokemonDetailModal pokemonId={selectedPokemonId} onClose={handleCloseModal} />
+      )}
     </div>
   );
 }
