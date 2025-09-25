@@ -29,24 +29,6 @@ export const useFilters = (pokemonList, { searchTerm, selectedType, sortBy }) =>
         pokemon.types.includes(selectedType.toLowerCase())
       );
     }
-
-   
-    
-
-    filtered.sort((a, b) => {
-      switch (sortBy) {
-        case 'id':
-          return a.id - b.id;
-        case 'id-desc':
-          return b.id - a.id;
-        case 'name':
-          return a.name.localeCompare(b.name);
-        case 'name-desc':
-          return b.name.localeCompare(a.name);
-        default:
-          return a.id - b.id;
-      }
-    });
     
     return filtered;
   }, [pokemonList, searchTerm, selectedType, sortBy]);

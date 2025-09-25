@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./PokemonFilter.module.css";
+import { REGIONS } from "../../service/api";
 
 const RegionFilter = ({ selectedRegion, setSelectedRegion }) => {
   const handleRegionChange = (e) => setSelectedRegion(e.target.value);
@@ -14,14 +15,11 @@ const RegionFilter = ({ selectedRegion, setSelectedRegion }) => {
         onChange={handleRegionChange}
         className={styles.filterSelect}
       >
-        <option value="kanto">Kanto (151)</option>
-        <option value="johto">Johto (100)</option>
-        <option value="hoenn">Hoenn (135)</option>
-        <option value="sinnoh">Sinnoh (107)</option>
-        <option value="unova">Unova (156)</option>
-        <option value="kalos">Kalos (72)</option>
-        <option value="alola">Alola (88)</option>
-        <option value="galar">Galar (89)</option>
+        {Object.entries(REGIONS).map(([key, region]) => (
+          <option key={key} value={key}>
+            {key.charAt(0).toUpperCase() + key.slice(1)} ({region.limit})
+          </option>
+        ))}
       </select>
     </div>
   );
