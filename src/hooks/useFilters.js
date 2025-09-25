@@ -1,5 +1,14 @@
 import { useMemo } from 'react';
 
+export function filterPokemonByType(pokemonList, type) {
+  return pokemonList.filter(pokemon => pokemon.types.includes(type));
+}
+
+export function handleTypeClick(pokemonList, setFilteredPokemon) {
+  return (type) => {
+    setFilteredPokemon(filterPokemonByType(pokemonList, type));
+  };
+}
 export const useFilters = (pokemonList, { searchTerm, selectedType, sortBy }) => {
   const filteredPokemon = useMemo(() => {
     if (!pokemonList) return [];
@@ -20,6 +29,8 @@ export const useFilters = (pokemonList, { searchTerm, selectedType, sortBy }) =>
         pokemon.types.includes(selectedType.toLowerCase())
       );
     }
+
+   
     
 
     filtered.sort((a, b) => {
