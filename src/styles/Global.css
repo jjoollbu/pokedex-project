@@ -1,4 +1,28 @@
 body {
   margin: 0;
-  font-family: sans-serif; 
+  font-family: sans-serif;
+}
+
+:root {
+  --background-light: url('../assets/images/bg.png');
+  --background-dark: #16171f;
+  --select-text: #707384
+}
+
+[data-theme='light'] {
+  background-image: var(--background-light);
+}
+
+[data-theme='dark'] {
+  background-color: var(--background-dark);
+  transition: background-color 0.3s ease-in-out;
+}
+
+[data-theme='dark'] label {
+  color: var(--select-text);
+}
+
+[data-theme='dark'] p,
+[data-theme='dark'] p>a {
+  color: white;
 }

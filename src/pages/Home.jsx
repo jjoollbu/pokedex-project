@@ -22,7 +22,7 @@ function Home() {
   };
 
   return (
-    <div className={styles.home} data-theme="dark">
+    <div className={styles.home}>
       <Header />
       <PokemonFilter
         pokemonList={pokemonList}
