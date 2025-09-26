@@ -42,7 +42,6 @@
 }
 
 
-/* Tablet */
 @media (min-width: 600px) {
   .filterContainer {
     padding: 1rem;
@@ -56,7 +55,6 @@
   }
 }
 
-/* Desktop */
 @media (min-width: 900px) {
   .filterContainer {
     padding: 1.5rem;
@@ -69,7 +67,7 @@
   }
 
   .filterLabel {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .filterSelect,
