@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Teko", sans-serif;
+}
+
+:root {
+    --background-light: url('../assets/images/bg.png');
+    --background-dark: #16171f;
+    --select-text: #707384
+}
+
+html {
+    background-image: var(--background-light);
+    transition: background-image 0.3s ease-in-out;
+}
+
+html [data-theme='dark'] {
+    background-color: var(--background-dark);
+    transition: background-color 0.3s ease-in-out;
+}
+
+html [data-theme='dark'] label {
+    color: var(--select-text);
+}
+html [data-theme='dark'] p,
+html [data-theme='dark'] p > a {
+    color: white;
+}
