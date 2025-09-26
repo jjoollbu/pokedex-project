@@ -4,7 +4,7 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import { typeIcons, typeColors } from '../../utils/typeUtils';
 
-function PokemonCard({ pokemon, onCardClick }) {
+function PokemonCard({ pokemon, onCardClick, OnTypeClick }) {
   if (!pokemon || !pokemon.types) {
     return null;
   }
@@ -41,6 +41,10 @@ function PokemonCard({ pokemon, onCardClick }) {
               <IconButton 
                 className={styles.typeIcon} 
                 style={{ backgroundColor: typeColors[type].strong }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  OnTypeClick(type);
+                }}
               >
                 <img src={typeIcons[type]} alt={type} />
               </IconButton>

@@ -1,0 +1,116 @@
+.themeToggle {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    margin-left: 0;
+}
+
+.toggle {
+    position: relative;
+    width: 44px;
+    height: 22px;
+}
+
+.input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.track {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg,
+            hsl(51, 20%, 86%),
+            hsl(46, 100%, 50%));
+    transition: background 0.3s ease;
+}
+
+.input:checked~.track {
+    background: linear-gradient(90deg,
+            hsl(212, 100%, 60%),
+            hsl(244, 52%, 34%));
+}
+
+.thumb {
+    position: absolute;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.4s ease;
+}
+
+.input:checked~.thumb {
+    transform: translateX(24px);
+}
+
+.icon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: blur(6px);
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.icon img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.icon.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+}
+
+.icon.visible img {
+    transform: scale(1.3);
+}
+
+@media (min-width: 600px) {
+    .toggle {
+        width: 64px;
+        height: 32px;
+    }
+
+    .thumb {
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .input:checked~.thumb {
+        transform: translateX(38px);
+    }
+}
+
+@media (min-width: 900px) {
+    .toggle {
+        width: 100px;
+        height: 32px;
+    }
+
+    .icon img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .input:checked~.thumb {
+        transform: translateX(70px);
+    }
+}

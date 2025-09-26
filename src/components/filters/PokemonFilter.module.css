@@ -1,0 +1,80 @@
+.filterContainer {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filterGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+  align-items: center;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.filterLabel {
+  font-weight: 800;
+  color: #000;
+  font-size: 0.75rem;
+  text-align: center;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.filterSelect,
+.searchInput {
+  padding: 0.35rem;
+  border: 1px solid #000;
+  font-size: 0.85rem;
+  background-color: white;
+  width: 100%;
+  text-align: flex-start;
+}
+
+
+/* Tablet */
+@media (min-width: 600px) {
+  .filterContainer {
+    padding: 1rem;
+  }
+
+  .filterGrid {
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+  .filterContainer {
+    padding: 1.5rem;
+  }
+
+  .filterGrid {
+    max-width: 900px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .filterLabel {
+    font-size: 1.2rem;
+  }
+
+  .filterSelect,
+  .searchInput {
+    padding: 0.2rem;
+    font-size: 0.9rem;
+  }
+}
